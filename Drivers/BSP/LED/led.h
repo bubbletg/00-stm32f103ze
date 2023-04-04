@@ -40,6 +40,7 @@
     {                                                      \
         HAL_GPIO_TogglePin(LED0_GPIO_PORT, LED0_GPIO_PIN); \
     } while (0) /* 翻转LED0 */
+
 #define LED1_TOGGLE()                                      \
     do                                                     \
     {                                                      \

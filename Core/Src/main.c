@@ -90,7 +90,7 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
-  LED0(0);
+  LED1(0);
 
   /* USER CODE END 2 */
 
@@ -98,6 +98,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+    HAL_Delay(1000);
     /* USER CODE END WHILE */
     // LED0(1);
     // LED1(0);

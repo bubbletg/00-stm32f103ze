@@ -43,13 +43,17 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
   case KEY0_INT_GPIO_PIN:
     if (KEY0 == 0)
     {
-      LED0_TOGGLE();
+      // LED0_TOGGLE();
+      LED0(1);
+      LED1(0);
     }
     break;
   case KEY1_INT_GPIO_PIN:
     if (KEY1 == 0)
     {
-      LED1_TOGGLE();
+      // LED1_TOGGLE();
+      LED1(0);
+      LED0(0);
     }
     break;
   case WKUP_INT_GPIO_PIN:
