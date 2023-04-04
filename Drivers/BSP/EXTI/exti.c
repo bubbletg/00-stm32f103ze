@@ -37,7 +37,6 @@ void WKUP_INT_IRQHandler(void)
  */
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
-  printf('HAL_GPIO_EXTI_Callback(GPIO_Pin=%d)', GPIO_Pin);
   HAL_Delay(20); // 延时消抖
   switch (GPIO_Pin)
   {
