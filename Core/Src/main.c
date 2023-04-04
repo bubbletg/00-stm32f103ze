@@ -84,7 +84,7 @@ int main(void)
 
   /* USER CODE BEGIN SysInit */
   led_init();
-  EXTI_Init();
+  exti_init();
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
