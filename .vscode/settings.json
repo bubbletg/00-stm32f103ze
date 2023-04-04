@@ -1,0 +1,9 @@
+{
+  "makefile.launchConfigurations": [
+    {
+      "cwd": "/Users/tiangui/stm32-study/00-stm32f103ze/build",
+      "binaryPath": "/Users/tiangui/stm32-study/00-stm32f103ze/build/00-stm32f103ze.elf",
+      "binaryArgs": []
+    }
+  ]
+}
