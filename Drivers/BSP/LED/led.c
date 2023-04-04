@@ -21,6 +21,6 @@ void led_init(void)
     gpio_init_struct.Pin = LED1_GPIO_PIN;                   /* LED1引脚 */
     HAL_GPIO_Init(LED1_GPIO_PORT, &gpio_init_struct);       /* 初始化LED1引脚 */
 
-    LED0(0);                                                /* 打开 LED0 */
-    LED1(0);                                                /* 打开 LED1 */
+    LED0(1);                                                /* 关闭 LED0 */
+    LED1(1);                                                /* 关闭 LED1 */
 }

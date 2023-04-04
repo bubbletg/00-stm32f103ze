@@ -5,5 +5,9 @@
       "binaryPath": "/Users/tiangui/stm32-study/00-stm32f103ze/build/00-stm32f103ze.elf",
       "binaryArgs": []
     }
-  ]
+  ],
+  "files.associations": {
+    "stm32f1xx_hal_gpio.h": "c",
+    "exti.h": "c"
+  }
 }

@@ -153,10 +153,11 @@ HAL_StatusTypeDef HAL_Init(void)
 #endif
 #endif /* PREFETCH_ENABLE */
 
-  /* Set Interrupt Group Priority */
+  /* Set Interrupt Group Priority */ // 设置中断优先级分组
   HAL_NVIC_SetPriorityGrouping(NVIC_PRIORITYGROUP_4);
 
   /* Use systick as time base source and configure 1ms tick (default clock after Reset is HSI) */
+  // 使用systick作为时间基准源，并配置1ms的tick
   HAL_InitTick(TICK_INT_PRIORITY);
 
   /* Init the low level hardware */
