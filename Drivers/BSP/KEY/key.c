@@ -54,7 +54,7 @@ uint8_t key_scan(uint8_t mode)
 
   if (key_up && (KEY0 == 0 || KEY1 == 0 || WK_UP == 1)) /* 按键松开标志为1, 且有任意一个按键按下了 */
   {
-    delay_ms(10); /* 去抖动 */
+    HAL_Delay(10); /* 去抖动 */
     key_up = 0;
 
     if (KEY0 == 0)
