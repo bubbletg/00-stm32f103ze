@@ -36,9 +36,9 @@ int main(void)
 
   /* Configure the system clock */
   SystemClock_Config();
+  MX_GPIO_Init();
   led_init();
   exti_init();
-  MX_GPIO_Init();
   LED1(0);
   LED0(0);
 

@@ -1,35 +1,42 @@
-#include "./exti.h"
-#include "../LED/led.h"
-#include "../KEY/key.h"
 #include "stm32f1xx_hal.h"
 #include "stm32f1xx_hal_gpio.h"
 #include "stm32f1xx_hal_cortex.h"
+#include "../KEY/key.h"
+#include "../LED/led.h"
+#include "./exti.h"
 
 /**
- * @brief  中断服务函数
+ * @brief       KEY0 外部中断服务程序
+ * @param       无
+ * @retval      无
  */
 void KEY0_INT_IRQHandler(void)
 {
-  HAL_GPIO_EXTI_IRQHandler(KEY0_INT_GPIO_PIN); // 调用 HAL 库中的中断处理函数
-  __HAL_GPIO_EXTI_CLEAR_IT(KEY0_INT_GPIO_PIN); // HAL库默认先清中断再处理回调，退出时再清一次中断，避免按键抖动误触发
+    HAL_GPIO_EXTI_IRQHandler(KEY0_INT_GPIO_PIN);         /* 调用中断处理公用函数 清除KEY0所在中断线 的中断标志位 */
+    __HAL_GPIO_EXTI_CLEAR_IT(KEY0_INT_GPIO_PIN);         /* HAL库默认先清中断再处理回调，退出时再清一次中断，避免按键抖动误触发 */
 }
 
 /**
- * @brief  中断服务函数
+ * @brief       KEY1 外部中断服务程序
+ * @param       无
+ * @retval      无
  */
 void KEY1_INT_IRQHandler(void)
-{
-  HAL_GPIO_EXTI_IRQHandler(KEY1_INT_GPIO_PIN); // 调用 HAL 库中的中断处理函数
-  __HAL_GPIO_EXTI_CLEAR_IT(KEY1_INT_GPIO_PIN); // HAL库默认先清中断再处理回调，退出时再清一次中断，避免按键抖动误触发
+{ 
+    HAL_GPIO_EXTI_IRQHandler(KEY1_INT_GPIO_PIN);         /* 调用中断处理公用函数 清除KEY1所在中断线 的中断标志位，中断下半部在HAL_GPIO_EXTI_Callback执行 */
+    __HAL_GPIO_EXTI_CLEAR_IT(KEY1_INT_GPIO_PIN);         /* HAL库默认先清中断再处理回调，退出时再清一次中断，避免按键抖动误触发 */
 }
 
+
 /**
- * @brief  中断服务函数
+ * @brief       WK_UP 外部中断服务程序
+ * @param       无
+ * @retval      无
  */
 void WKUP_INT_IRQHandler(void)
-{
-  HAL_GPIO_EXTI_IRQHandler(WKUP_INT_GPIO_PIN); // 调用 HAL 库中的中断处理函数
-  __HAL_GPIO_EXTI_CLEAR_IT(WKUP_INT_GPIO_PIN); // HAL库默认先清中断再处理回调，退出时再清一次中断，避免按键抖动误触发
+{ 
+    HAL_GPIO_EXTI_IRQHandler(WKUP_INT_GPIO_PIN);        /* 调用中断处理公用函数 清除KEY_UP所在中断线 的中断标志位，中断下半部在HAL_GPIO_EXTI_Callback执行 */
+    __HAL_GPIO_EXTI_CLEAR_IT(WKUP_INT_GPIO_PIN);        /* HAL库默认先清中断再处理回调，退出时再清一次中断，避免按键抖动误触发 */
 }
 
 /**
