@@ -15,6 +15,5 @@
     "stm32f1xx_hal_uart.h": "c",
     "led.h": "c",
     "main.h": "c"
-  },
-  "C_Cpp.intelliSenseEngine": "Tag Parser"
+  }
 }

@@ -1,14 +1,14 @@
 #ifndef __USART_H__
 #define __USART_H__
 
-#define USART_REC_LEN__ 200 //定义最大接收字节数 200
+#define USART_REC_LEN 200 //定义最大接收字节数 200
 
 
 // 接收状态标记
 extern uint8_t G_USART_RX_STA;
 
 // 串口接收缓冲区
-extern uint8_t G_USART_RX_BUF[USART_REC_LEN__]; // 接收缓冲,最大USART_REC_LEN个字节.
+extern uint8_t G_USART_RX_BUF[USART_REC_LEN]; // 接收缓冲,最大USART_REC_LEN个字节.
 
 // UART 句柄
 extern UART_HandleTypeDef G_UART_InitStruct;
