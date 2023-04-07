@@ -43,11 +43,13 @@ int main(void)
   // exti_init();
   usart_init(115200);
   LED1(0);
-  // LED0(0);
+  LED0(0);
 
+
+  my_printf("abcdtiangui123", 14);
   while (1)
   {
-    printf("a\r\n");
+    printf("start\r\n");
     if (G_USART_RX_STA == 1)
     {
       /**
@@ -57,7 +59,7 @@ int main(void)
        * @param Size: Amount of data to be sent (uint16_t).
        * @param Timeout: Timeout duration (uint32_t).
        */
-      HAL_UART_Transmit(&G_UART_InitStruct, (uint8_t *)G_USART_RX_BUF, 1, 1000);
+      HAL_UART_Transmit(&G_UART_InitStruct, (uint8_t *)G_USART_RX_BUF, USART_REC_LEN, 1000);
       // 等等发送完成
       while (__HAL_UART_GET_FLAG(&G_UART_InitStruct, UART_FLAG_TC) != 1);
       printf("abcd\r\n");
@@ -66,7 +68,7 @@ int main(void)
       HAL_Delay(10);
     }
   }
-  /* USER CODE END 3 */
+
 }
 
 /**

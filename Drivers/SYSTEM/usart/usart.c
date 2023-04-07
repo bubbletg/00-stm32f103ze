@@ -49,7 +49,7 @@ int fputc(int ch, FILE *f)
 uint8_t G_USART_RX_STA = 0;
 
 // 串口接收缓冲区
-uint8_t G_USART_RX_BUF[1]; // 接收缓冲,最大USART_REC_LEN个字节.
+uint8_t G_USART_RX_BUF[USART_REC_LEN]; // 接收缓冲,最大USART_REC_LEN个字节.
 
 // UART 句柄
 UART_HandleTypeDef G_UART_InitStruct;
@@ -71,7 +71,7 @@ void usart_init(uint32_t baudrate)
 	HAL_UART_Init(&G_UART_InitStruct);				   // 初始化串口
 
 	/* 该函数会开启接收中断：标志位UART_IT_RXNE，并且设置接收缓冲以及接收缓冲接收最大数据量 */
-	HAL_UART_Receive_IT(&G_UART_InitStruct, (uint8_t *)G_USART_RX_BUF, 1);
+	HAL_UART_Receive_IT(&G_UART_InitStruct, (uint8_t *)G_USART_RX_BUF, USART_REC_LEN);
 }
 
 /**
@@ -115,7 +115,7 @@ void USART1_IRQHandler(void)
 	// 串口中断服务函数
 	HAL_UART_IRQHandler(&G_UART_InitStruct);
 	// 接收中断
-	HAL_UART_Receive_IT(&G_UART_InitStruct, (uint8_t *)G_USART_RX_BUF, 1);
+	HAL_UART_Receive_IT(&G_UART_InitStruct, (uint8_t *)G_USART_RX_BUF, USART_REC_LEN);
 }
 
 /**
@@ -132,6 +132,15 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 			G_USART_RX_STA = 1;
 		// }
 	}
+}
+
+
+void my_printf(char *fmt, uint8_t length)
+{
+	// HAL_UART_Transmit 发送数据
+  HAL_UART_Transmit(&G_UART_InitStruct, (uint8_t *)fmt, length, 1000);
+  // 等等发送完成
+  while (__HAL_UART_GET_FLAG(&G_UART_InitStruct, UART_FLAG_TC) != 1);
 }
 
 

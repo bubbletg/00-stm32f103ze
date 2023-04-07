@@ -192,7 +192,8 @@ clean:
 #######################################
 # download
 #######################################
-PWD_DIR = /Users/tiangui/stm32-study/00-stm32f103ze
+# PWD_DIR = /Users/tiangui/stm32-study/00-stm32f103ze
+PWD_DIR = D:/study/my-code/c-code/00-stm32f103ze
 OPENOCD_INTERFACE = stlink.cfg
 OPENOCD_TARGET = stm32f1x.cfg
 

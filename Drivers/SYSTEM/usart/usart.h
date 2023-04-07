@@ -8,11 +8,13 @@
 extern uint8_t G_USART_RX_STA;
 
 // 串口接收缓冲区
-extern uint8_t G_USART_RX_BUF[1]; // 接收缓冲
+extern uint8_t G_USART_RX_BUF[USART_REC_LEN]; // 接收缓冲
 // UART 句柄
 extern UART_HandleTypeDef G_UART_InitStruct;
 
 
 void usart_init(uint32_t baudrate);
+
+void my_printf(char *fmt, uint8_t length);
 
 #endif
