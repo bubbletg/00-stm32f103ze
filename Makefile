@@ -204,5 +204,16 @@ download:
 # openocd -f interface/$(OPENOCD_INTERFACE) -f target/$(OPENOCD_TARGET) -c init -c halt -c "flash write_image erase ${PWD_DIR}/$(BUILD_DIR)/atk_f103copy.hex" -c reset -c shutdown
 # openocd -f interface/$(OPENOCD_INTERFACE) -f target/$(OPENOCD_TARGET) -c init -c halt -c "flash write_image erase /Users/tiangui/stm32-study/00-stm32f103ze/build/atk_f103copy.hex" -c reset -c shutdown
 
+#######################################
+# erase
+#######################################
+# PWD_DIR = /Users/tiangui/stm32-study/00-stm32f103ze
+PWD_DIR = D:/study/my-code/c-code/00-stm32f103ze
+OPENOCD_INTERFACE = stlink.cfg
+OPENOCD_TARGET = stm32f1x.cfg
+
+erase:
+	openocd -f interface/$(OPENOCD_INTERFACE) -f target/$(OPENOCD_TARGET) -c init -c halt -c "stm32f1x mass_erase 0" -c reset -c shutdown
+
 
 # *** EOF ***
