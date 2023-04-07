@@ -51,14 +51,14 @@ int main(void)
     if (G_USART_RX_STA == 1)
     {
       /**
-       * HAL_UART_Transmit
+       * HAL_UART_Transmit 发送数据
        * @param huart: UART handle.
        * @param pData: Pointer to data buffer (uint8_t *).
        * @param Size: Amount of data to be sent (uint16_t).
        * @param Timeout: Timeout duration (uint32_t).
        */
       HAL_UART_Transmit(&G_UART_InitStruct, (uint8_t *)G_USART_RX_BUF, 1, 1000);
-
+      // 等等发送完成
       while (__HAL_UART_GET_FLAG(&G_UART_InitStruct, UART_FLAG_TC) != 1);
       printf("abcd\r\n");
       G_USART_RX_STA = 0;

@@ -1122,7 +1122,7 @@ HAL_StatusTypeDef HAL_UART_UnRegisterRxEventCallback(UART_HandleTypeDef *huart)
   */
 
 /**
-  * @brief  Sends an amount of data in blocking mode.
+  * @brief  Sends an amount of data in blocking mode. 以阻塞模式发送一定量的数据。
   * @note   When UART parity is not enabled (PCE = 0), and Word Length is configured to 9 bits (M1-M0 = 01),
   *         the sent data is handled as a set of u16. In this case, Size must indicate the number
   *         of u16 provided through pData.
@@ -1347,7 +1347,7 @@ HAL_StatusTypeDef HAL_UART_Transmit_IT(UART_HandleTypeDef *huart, uint8_t *pData
 }
 
 /**
-  * @brief  Receives an amount of data in non blocking mode.
+  * @brief  Receives an amount of data in non blocking mode.以非阻塞模式接收一定量的数据
   * @note   When UART parity is not enabled (PCE = 0), and Word Length is configured to 9 bits (M1-M0 = 01),
   *         the received data is handled as a set of u16. In this case, Size must indicate the number
   *         of u16 available through pData.

@@ -132,6 +132,7 @@ void USART1_IRQHandler(void)
 {
 	// 串口中断服务函数
 	HAL_UART_IRQHandler(&G_UART_InitStruct);
+	// 接收中断
 	HAL_UART_Receive_IT(&G_UART_InitStruct, (uint8_t *)G_USART_RX_BUF, 1);
 }
 
