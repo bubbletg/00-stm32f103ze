@@ -21,6 +21,7 @@
 #include "../../BSP/LED/led.h"
 // #include "../../BSP/EXTI/exti.h"
 #include "../../SYSTEM/USART/usart.h"
+#include "../../BSP/IWDG/iwdg.h"
 #include <stdio.h>
 
 void SystemClock_Config(void);
@@ -43,13 +44,10 @@ int main(void)
   // exti_init();
   usart_init(115200);
   LED1(0);
-  LED0(0);
-
-
-  my_printf("abcdtiangui123", 14);
+  LED0(1);
+  test_iwdg();
   while (1)
   {
-    printf("start\r\n");
     if (G_USART_RX_STA == 1)
     {
       /**
@@ -62,7 +60,6 @@ int main(void)
       HAL_UART_Transmit(&G_UART_InitStruct, (uint8_t *)G_USART_RX_BUF, USART_REC_LEN, 1000);
       // 等等发送完成
       while (__HAL_UART_GET_FLAG(&G_UART_InitStruct, UART_FLAG_TC) != 1);
-      printf("abcd\r\n");
       G_USART_RX_STA = 0;
     } else {
       HAL_Delay(10);
