@@ -8,6 +8,13 @@
   ],
   "files.associations": {
     "stm32f1xx_hal_gpio.h": "c",
-    "exti.h": "c"
-  }
+    "exti.h": "c",
+    "usart.h": "c",
+    "stm32f1xx_hal.h": "c",
+    "stm32f1xx_hal_conf.h": "c",
+    "stm32f1xx_hal_uart.h": "c",
+    "led.h": "c",
+    "main.h": "c"
+  },
+  "C_Cpp.intelliSenseEngine": "Tag Parser"
 }

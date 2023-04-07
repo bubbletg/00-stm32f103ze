@@ -1,6 +1,4 @@
-#include "stm32f1xx_hal.h"
-#include "stm32f1xx_hal_gpio.h"
-#include "stm32f1xx_hal_cortex.h"
+
 #include "../KEY/key.h"
 #include "../LED/led.h"
 #include "./exti.h"
