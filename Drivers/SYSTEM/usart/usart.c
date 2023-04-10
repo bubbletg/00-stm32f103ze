@@ -1,6 +1,7 @@
 #include "main.h"
 #include "./usart.h"
 #include <stdio.h>
+#include <string.h>
 
 /* 如果使用os,则包括下面的头文件即可. */
 #if SYS_SUPPORT_OS
@@ -134,6 +135,13 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 	}
 }
 
+void my_printf_pro(char *fmt)
+{
+	// HAL_UART_Transmit 发送数据
+  HAL_UART_Transmit(&G_UART_InitStruct, (uint8_t *)fmt, strlen(fmt), 1000);
+  // 等等发送完成
+  while (__HAL_UART_GET_FLAG(&G_UART_InitStruct, UART_FLAG_TC) != 1);
+}
 
 void my_printf(char *fmt, uint8_t length)
 {

@@ -20,8 +20,8 @@
 #include "main.h"
 #include "../../BSP/LED/led.h"
 // #include "../../BSP/EXTI/exti.h"
-#include "../../SYSTEM/USART/usart.h"
 #include "../../BSP/IWDG/iwdg.h"
+#include "../../BSP/WWDG/wwdg.h"
 #include <stdio.h>
 
 void SystemClock_Config(void);
@@ -44,28 +44,9 @@ int main(void)
   // exti_init();
   usart_init(115200);
   LED1(0);
-  LED0(1);
-  test_iwdg();
-  while (1)
-  {
-    if (G_USART_RX_STA == 1)
-    {
-      /**
-       * HAL_UART_Transmit 发送数据
-       * @param huart: UART handle.
-       * @param pData: Pointer to data buffer (uint8_t *).
-       * @param Size: Amount of data to be sent (uint16_t).
-       * @param Timeout: Timeout duration (uint32_t).
-       */
-      HAL_UART_Transmit(&G_UART_InitStruct, (uint8_t *)G_USART_RX_BUF, USART_REC_LEN, 1000);
-      // 等等发送完成
-      while (__HAL_UART_GET_FLAG(&G_UART_InitStruct, UART_FLAG_TC) != 1);
-      G_USART_RX_STA = 0;
-    } else {
-      HAL_Delay(10);
-    }
-  }
-
+  LED0(0);
+  // test_iwdg();
+  Test_WWDG();
 }
 
 /**

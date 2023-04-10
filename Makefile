@@ -51,10 +51,12 @@ Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c \
 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c \
 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c \
 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_iwdg.c \
+Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_wwdg.c \
 Core/Src/system_stm32f1xx.c \
 Drivers/BSP/LED/led.c \
 Drivers/BSP/KEY/key.c \
 Drivers/BSP/IWDG/iwdg.c \
+Drivers/BSP/WWDG/wwdg.c \
 Drivers/SYSTEM/usart/usart.c \
 
 # ASM sources
@@ -198,30 +200,21 @@ clean:
 #######################################
 # download
 #######################################
-# 用于区分不同平台
-ifeq ($(shell uname -s),Linux)
-# Linux平台
-else ifeq ($(shell ver),Windows)
-# Windows平台
-		PWD_DIR = D:/study/my-code/c-code/00-stm32f103ze
-else ifeq ($(shell uname -s), Darwin)
-# Mac平台
-		PWD_DIR = /Users/tiangui/stm32-study/00-stm32f103ze
-else
-# 默认 Mac 平台
-		PWD_DIR = $(shell pwd)
-endif
+PWD_DIR = $(shell pwd)
+PWD_DIR_WIN = D:/study/my-code/c-code/00-stm32f103ze
 OPENOCD_INTERFACE = stlink.cfg
 OPENOCD_TARGET = stm32f1x.cfg
 
 download:
 	openocd -f interface/$(OPENOCD_INTERFACE) -f target/$(OPENOCD_TARGET) -c init -c halt -c "flash write_image erase ${PWD_DIR}/$(BUILD_DIR)/$(TARGET).hex" -c reset -c shutdown
-
+download-win:
+	openocd -f interface/$(OPENOCD_INTERFACE) -f target/$(OPENOCD_TARGET) -c init -c halt -c "flash write_image erase ${PWD_DIR_WIN}/$(BUILD_DIR)/$(TARGET).hex" -c reset -c shutdown
 #######################################
 # erase
 #######################################
 erase:
 	openocd -f interface/$(OPENOCD_INTERFACE) -f target/$(OPENOCD_TARGET) -c init -c halt -c "stm32f1x mass_erase 0" -c reset -c shutdown
 
+e-download-w: erase download-win
 
 # *** EOF ***

@@ -15,6 +15,9 @@
     "stm32f1xx_hal_uart.h": "c",
     "led.h": "c",
     "main.h": "c",
-    "stm32f1xx_hal_iwdg.h": "c"
+    "stm32f1xx_hal_iwdg.h": "c",
+    "wwdg.h": "c",
+    "stm32f1xx_hal_wwdg.h": "c",
+    "stdio.h": "c"
   }
 }
