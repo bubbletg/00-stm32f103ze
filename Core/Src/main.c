@@ -48,6 +48,17 @@ int main(void)
   LED0(0);
   // test_iwdg();
   // Test_WWDG();
-  test_tim6();
+  // test_tim6();
+  my_printf_pro("hello world\r\n");
+  while (1)
+  {
+    LED0(1);
+    LED1(1);
+    delay_ms(500);
+    my_printf_pro("hello world~~~\r\n");
+    LED1(0);
+    LED0(0);
+    delay_ms(500);
+  }
 }
 

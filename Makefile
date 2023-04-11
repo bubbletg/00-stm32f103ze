@@ -34,6 +34,7 @@ BUILD_DIR = build
 # C sources
 C_SOURCES =  \
 Core/Src/system/sys/sys.c \
+Core/Src/system/delay.c \
 Core/Src/main.c \
 Core/Src/stm32f1xx_it.c \
 Core/Src/stm32f1xx_hal_msp.c \
