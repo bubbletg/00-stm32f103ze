@@ -32,8 +32,6 @@ extern "C" {
 #include "stm32f1xx_hal_conf.h"
 #include "../../SYSTEM/USART/usart.h"
 
-void Error_Handler(void);
-
 
 #ifdef __cplusplus
 }
