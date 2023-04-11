@@ -22,6 +22,8 @@
 // #include "../../BSP/EXTI/exti.h"
 #include "../../BSP/IWDG/iwdg.h"
 #include "../../BSP/WWDG/wwdg.h"
+#include "../../BSP/TIME/time.h"
+
 #include <stdio.h>
 
 void SystemClock_Config(void);
@@ -46,7 +48,8 @@ int main(void)
   LED1(0);
   LED0(0);
   // test_iwdg();
-  Test_WWDG();
+  // Test_WWDG();
+  test_tim6();
 }
 
 /**

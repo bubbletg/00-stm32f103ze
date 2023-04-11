@@ -18,6 +18,8 @@
     "stm32f1xx_hal_iwdg.h": "c",
     "wwdg.h": "c",
     "stm32f1xx_hal_wwdg.h": "c",
-    "stdio.h": "c"
+    "stdio.h": "c",
+    "stm32f1xx_hal_tim.h": "c",
+    "time.h": "c"
   }
 }

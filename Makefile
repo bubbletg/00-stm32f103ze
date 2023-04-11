@@ -57,6 +57,7 @@ Drivers/BSP/LED/led.c \
 Drivers/BSP/KEY/key.c \
 Drivers/BSP/IWDG/iwdg.c \
 Drivers/BSP/WWDG/wwdg.c \
+Drivers/BSP/TIME/time.c \
 Drivers/SYSTEM/usart/usart.c \
 
 # ASM sources
@@ -215,6 +216,6 @@ download-win:
 erase:
 	openocd -f interface/$(OPENOCD_INTERFACE) -f target/$(OPENOCD_TARGET) -c init -c halt -c "stm32f1x mass_erase 0" -c reset -c shutdown
 
-e-download-w: erase download-win
+e-download-w: all erase download-win
 
 # *** EOF ***

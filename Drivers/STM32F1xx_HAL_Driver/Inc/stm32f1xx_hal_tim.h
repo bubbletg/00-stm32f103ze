@@ -43,22 +43,26 @@ extern "C" {
 
 /**
   * @brief  TIM Time base Configuration Structure definition
+  * TIM时基配置结构定义
   */
 typedef struct
 {
+  // 时钟预分频系数
   uint32_t Prescaler;         /*!< Specifies the prescaler value used to divide the TIM clock.
                                    This parameter can be a number between Min_Data = 0x0000 and Max_Data = 0xFFFF */
 
+  // 计数器模式
   uint32_t CounterMode;       /*!< Specifies the counter mode.
                                    This parameter can be a value of @ref TIM_Counter_Mode */
 
+  // 计数器周期，自动重装载值 ARR
   uint32_t Period;            /*!< Specifies the period value to be loaded into the active
                                    Auto-Reload Register at the next update event.
                                    This parameter can be a number between Min_Data = 0x0000 and Max_Data = 0xFFFF.  */
-
+  // 时钟分频因子
   uint32_t ClockDivision;     /*!< Specifies the clock division.
                                    This parameter can be a value of @ref TIM_ClockDivision */
-
+  // 重复计数器寄存器的值
   uint32_t RepetitionCounter;  /*!< Specifies the repetition counter value. Each time the RCR downcounter
                                     reaches zero, an update event is generated and counting restarts
                                     from the RCR value (N).
@@ -69,7 +73,7 @@ typedef struct
                                      Max_Data = 0xFF.
                                      Advanced timers: this parameter must be a number between Min_Data = 0x0000 and
                                      Max_Data = 0xFFFF. */
-
+  // 使能自动重装载预装载
   uint32_t AutoReloadPreload;  /*!< Specifies the auto-reload preload.
                                    This parameter can be a value of @ref TIM_AutoReloadPreload */
 } TIM_Base_InitTypeDef;
@@ -338,9 +342,9 @@ typedef struct __TIM_HandleTypeDef
 typedef struct
 #endif /* USE_HAL_TIM_REGISTER_CALLBACKS */
 {
-  TIM_TypeDef                        *Instance;         /*!< Register base address                             */
-  TIM_Base_InitTypeDef               Init;              /*!< TIM Time Base required parameters                 */
-  HAL_TIM_ActiveChannel              Channel;           /*!< Active channel                                    */
+  TIM_TypeDef                        *Instance;         /*!< Register base address       寄存器基址                       */
+  TIM_Base_InitTypeDef               Init;              /*!< TIM Time Base required parameters TIM时基所需参数                */
+  HAL_TIM_ActiveChannel              Channel;           /*!< Active channel     活动通道                               */
   DMA_HandleTypeDef                  *hdma[7];          /*!< DMA Handlers array
                                                              This array is accessed by a @ref DMA_Handle_index */
   HAL_LockTypeDef                    Lock;              /*!< Locking object                                    */
