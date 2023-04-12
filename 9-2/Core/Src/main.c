@@ -20,10 +20,16 @@ int main(void)
   led_init();
   usart_init(115200);
   LED1(0);
-  LED0(0);
+  LED0(1);
   my_printf_pro("hello world\r\n");
-  gtim_timx_pwm_chy_init(500 - 1, 72 - 1);
 
+  delay_ms(500);
+  delay_ms(500);
+  delay_ms(500);
+  delay_ms(500);
+  delay_ms(500);
+  delay_ms(500);
+  gtim_timx_pwm_chy_init(500 - 1, 72 - 1);
   while (1)
   {
     delay_ms(10);
