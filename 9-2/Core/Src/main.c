@@ -1,66 +1,38 @@
-/* USER CODE BEGIN Header */
-/**
- ******************************************************************************
- * @file           : main.c
- * @brief          : Main program body
- ******************************************************************************
- * @attention
- *
- * Copyright (c) 2023 STMicroelectronics.
- * All rights reserved.
- *
- * This software is licensed under terms that can be found in the LICENSE file
- * in the root directory of this software component.
- * If no LICENSE file comes with this software, it is provided AS-IS.
- *
- ******************************************************************************
- */
-/* USER CODE END Header */
-
 #include "main.h"
 #include "./system/sys/sys.h"
 #include "../../BSP/LED/led.h"
-// #include "../../BSP/EXTI/exti.h"
 #include "../../BSP/IWDG/iwdg.h"
 #include "../../BSP/WWDG/wwdg.h"
-// #include "../../BSP/TIME/time.h"
-#include "../../BSP/GTIM/gtim.h"
-
+#include "../../BSP/TIMER/gtim.h"
 #include <stdio.h>
 
 
-/**
- * @brief  The application entry point.
- * @retval int
- */
+extern TIM_HandleTypeDef htimx;
+
 int main(void)
 {
-  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  // HAL 初始化
-  HAL_Init();
+  uint16_t ledrpwmval = 0;
+  uint8_t dir = 1;
 
-  /* Configure the system clock */
+  HAL_Init();
   SystemClock_Config();
   MX_GPIO_Init();
   led_init();
-  // exti_init();
   usart_init(115200);
   LED1(0);
   LED0(0);
-  // test_iwdg();
-  // Test_WWDG();
-  // test_tim6();
   my_printf_pro("hello world\r\n");
-  test_gtime(); // 通用定时器中断实验
-  // while (1)
-  // {
-  //   LED0(1);
-  //   LED1(1);
-  //   delay_ms(500);
-  //   my_printf_pro("hello world~~~\r\n");
-  //   LED1(0);
-  //   LED0(0);
-  //   delay_ms(500);
-  // }
-}
+  gtim_timx_pwm_chy_init(500 - 1, 72 - 1);
 
+  while (1)
+  {
+    delay_ms(10);
+    if (dir) ledrpwmval++;   // 递增
+    else ledrpwmval--;  // 递减
+
+    if (ledrpwmval > 72 - 1) dir = 0;
+    if (ledrpwmval == 0) dir = 1;
+
+    __HAL_TIM_SET_COMPARE(&htimx, TIM_CHANNEL_2, ledrpwmval); // 设置比较值
+  }
+}
