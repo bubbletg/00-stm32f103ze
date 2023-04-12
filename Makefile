@@ -59,8 +59,9 @@ Drivers/BSP/LED/led.c \
 Drivers/BSP/KEY/key.c \
 Drivers/BSP/IWDG/iwdg.c \
 Drivers/BSP/WWDG/wwdg.c \
-Drivers/BSP/TIME/time.c \
+Drivers/BSP/GTIM/gtim.c \
 Drivers/SYSTEM/usart/usart.c \
+# Drivers/BSP/TIME/time.c \
 
 # ASM sources
 ASM_SOURCES =  \

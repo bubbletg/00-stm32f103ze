@@ -713,7 +713,7 @@ typedef  void (*pTIM_CallbackTypeDef)(TIM_HandleTypeDef *htim);  /*!< pointer to
 /** @defgroup TIM_Flag_definition TIM Flag Definition
   * @{
   */
-#define TIM_FLAG_UPDATE                    TIM_SR_UIF                           /*!< Update interrupt flag         */
+#define TIM_FLAG_UPDATE                    TIM_SR_UIF                           /*!< Update interrupt flag   更新中断标志      */
 #define TIM_FLAG_CC1                       TIM_SR_CC1IF                         /*!< Capture/Compare 1 interrupt flag */
 #define TIM_FLAG_CC2                       TIM_SR_CC2IF                         /*!< Capture/Compare 2 interrupt flag */
 #define TIM_FLAG_CC3                       TIM_SR_CC3IF                         /*!< Capture/Compare 3 interrupt flag */
@@ -1179,7 +1179,7 @@ typedef  void (*pTIM_CallbackTypeDef)(TIM_HandleTypeDef *htim);  /*!< pointer to
   */
 #define __HAL_TIM_DISABLE_DMA(__HANDLE__, __DMA__)        ((__HANDLE__)->Instance->DIER &= ~(__DMA__))
 
-/** @brief  Check whether the specified TIM interrupt flag is set or not.
+/** @brief  Check whether the specified TIM interrupt flag is set or not. 检查指定的TIM中断标志是否已设置。
   * @param  __HANDLE__ specifies the TIM Handle.
   * @param  __FLAG__ specifies the TIM interrupt flag to check.
   *        This parameter can be one of the following values:
@@ -1199,7 +1199,7 @@ typedef  void (*pTIM_CallbackTypeDef)(TIM_HandleTypeDef *htim);  /*!< pointer to
   */
 #define __HAL_TIM_GET_FLAG(__HANDLE__, __FLAG__)          (((__HANDLE__)->Instance->SR &(__FLAG__)) == (__FLAG__))
 
-/** @brief  Clear the specified TIM interrupt flag.
+/** @brief  Clear the specified TIM interrupt flag. 清除指定的TIM中断标志。
   * @param  __HANDLE__ specifies the TIM Handle.
   * @param  __FLAG__ specifies the TIM interrupt flag to clear.
   *        This parameter can be one of the following values:
@@ -1220,7 +1220,7 @@ typedef  void (*pTIM_CallbackTypeDef)(TIM_HandleTypeDef *htim);  /*!< pointer to
 #define __HAL_TIM_CLEAR_FLAG(__HANDLE__, __FLAG__)        ((__HANDLE__)->Instance->SR = ~(__FLAG__))
 
 /**
-  * @brief  Check whether the specified TIM interrupt source is enabled or not.
+  * @brief  Check whether the specified TIM interrupt source is enabled or not. 检查指定的TIM中断源是否已启用。
   * @param  __HANDLE__ TIM handle
   * @param  __INTERRUPT__ specifies the TIM interrupt source to check.
   *          This parameter can be one of the following values:

@@ -23,7 +23,8 @@
 // #include "../../BSP/EXTI/exti.h"
 #include "../../BSP/IWDG/iwdg.h"
 #include "../../BSP/WWDG/wwdg.h"
-#include "../../BSP/TIME/time.h"
+// #include "../../BSP/TIME/time.h"
+#include "../../BSP/GTIM/gtim.h"
 
 #include <stdio.h>
 
@@ -50,15 +51,16 @@ int main(void)
   // Test_WWDG();
   // test_tim6();
   my_printf_pro("hello world\r\n");
-  while (1)
-  {
-    LED0(1);
-    LED1(1);
-    delay_ms(500);
-    my_printf_pro("hello world~~~\r\n");
-    LED1(0);
-    LED0(0);
-    delay_ms(500);
-  }
+  test_gtime(); // 通用定时器中断实验
+  // while (1)
+  // {
+  //   LED0(1);
+  //   LED1(1);
+  //   delay_ms(500);
+  //   my_printf_pro("hello world~~~\r\n");
+  //   LED1(0);
+  //   LED0(0);
+  //   delay_ms(500);
+  // }
 }
 
