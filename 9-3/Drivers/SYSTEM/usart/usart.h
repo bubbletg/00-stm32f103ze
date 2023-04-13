@@ -15,9 +15,4 @@ extern UART_HandleTypeDef G_UART_InitStruct;
 
 void usart_init(uint32_t baudrate);
 
-void my_printf_pro(char *fmt);
-void my_printf_pro_int(uint32_t data);
-
-void my_printf(char *fmt, uint8_t length);
-
 #endif

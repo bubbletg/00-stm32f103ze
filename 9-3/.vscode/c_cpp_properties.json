@@ -35,7 +35,7 @@
                 "USE_STDPERIPH_DRIVER",
                 "STM32F10X_HD"
             ],
-            "cStandard": "c17",
+            "cStandard": "gnu99",
             "cppStandard": "c++17",
             "configurationProvider": "ms-vscode.makefile-tools"
         }

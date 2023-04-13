@@ -1,10 +1,10 @@
+#include <stdio.h>
 #include "main.h"
 #include "./system/sys/sys.h"
 #include "../../BSP/LED/led.h"
 #include "../../BSP/IWDG/iwdg.h"
 #include "../../BSP/WWDG/wwdg.h"
 #include "../../BSP/TIMER/gtim.h"
-#include <stdio.h>
 
 extern uint8_t g_timxchy_cap_sta;  /* 输入捕获状态 */
 extern uint16_t g_timxchy_cap_val; /* 输入捕获值 */
@@ -21,7 +21,7 @@ int main(void)
   usart_init(115200);
   LED1(1);
   LED0(1);
-  my_printf_pro("hello world\r\n");
+printf("hello world\r\n");
 
   delay_ms(500);
   delay_ms(500);
@@ -38,9 +38,7 @@ int main(void)
       temp = g_timxchy_cap_sta & 0X3F;
       temp *= 65536;               /* 溢出时间总和 */
       temp += g_timxchy_cap_val;   /* 得到总的高电平时间 */
-      my_printf_pro("HIGH:\r\n");  /* 打印总的高点平时间 */
-      my_printf_pro_int(temp); /* 打印总的高点平时间 */
-      my_printf_pro("us:\r\n");    /* 打印总的高点平时间 */
+      printf("%dus:\r\n", temp); /* 打印总的高点平时间 */
       g_timxchy_cap_sta = 0;       /* 开启下一次捕获*/
     }
     t++;

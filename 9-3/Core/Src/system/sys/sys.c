@@ -63,7 +63,7 @@ void Error_Handler(void)
   __disable_irq();
   while (1)
   {
-    my_printf_pro("Error_Handler~~\r\n");
+    // my_printf_pro("Error_Handler~~\r\n");
   }
   /* USER CODE END Error_Handler_Debug */
 }

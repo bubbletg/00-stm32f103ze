@@ -43,6 +43,20 @@ int fputc(int ch, FILE *f)
     USART1->DR = (uint8_t)ch;             /* 将要发送的字符 ch 写入到DR寄存器 */
     return ch;
 }
+
+/**
+ * 重新 _write
+*/
+int _write (int fd, char *pBuffer, int size)
+{
+    for (int i = 0; i < size; i++)
+    {
+        while((USART1->SR&0X40)==0);//等待上一次串口数据发送完成
+        USART1->DR = (uint8_t) pBuffer[i];       //写DR,串口1将发送数据
+    }
+    return size;
+}
+
 #endif
 /******************************************************************************************/
 
@@ -134,31 +148,6 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 		// }
 	}
 }
-
-void my_printf_pro(char *fmt)
-{
-	// HAL_UART_Transmit 发送数据
-  HAL_UART_Transmit(&G_UART_InitStruct, (uint8_t *)fmt, strlen(fmt), 1000);
-  // 等等发送完成
-  while (__HAL_UART_GET_FLAG(&G_UART_InitStruct, UART_FLAG_TC) != 1);
-}
-
-void my_printf_pro_int(uint32_t data)
-{
-	// HAL_UART_Transmit 发送数据
-  HAL_UART_Transmit(&G_UART_InitStruct, (uint8_t *)data, strlen(data), 1000);
-  // 等等发送完成
-  while (__HAL_UART_GET_FLAG(&G_UART_InitStruct, UART_FLAG_TC) != 1);
-}
-
-void my_printf(char *fmt, uint8_t length)
-{
-	// HAL_UART_Transmit 发送数据
-  HAL_UART_Transmit(&G_UART_InitStruct, (uint8_t *)fmt, length, 1000);
-  // 等等发送完成
-  while (__HAL_UART_GET_FLAG(&G_UART_InitStruct, UART_FLAG_TC) != 1);
-}
-
 
 
 

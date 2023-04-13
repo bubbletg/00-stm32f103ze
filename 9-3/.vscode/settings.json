@@ -15,6 +15,7 @@
     "stm32f1xx_hal_tim.h": "c",
     "time.h": "c",
     "sys.h": "c",
-    "gtim.h": "c"
+    "gtim.h": "c",
+    "cstdio": "c"
   }
 }

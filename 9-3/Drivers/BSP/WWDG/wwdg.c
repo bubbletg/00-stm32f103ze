@@ -58,21 +58,21 @@ void Test_WWDG()
   // __HAL_RCC_GET_FLAG 用于判断是否是看门狗复位，如果是看门狗复位，那么就清除复位标志，否则就打印复位信息
   if (__HAL_RCC_GET_FLAG(RCC_FLAG_WWDGRST) != RESET) // 判断是否是看门狗复位
   {
-    my_printf_pro("WWDG reset~~~~~~~2\r\n");
+  printf("WWDG reset~~~~~~~2\r\n");
     __HAL_RCC_CLEAR_RESET_FLAGS(); // 清除复位标志
     // HAL_Delay(1000);
   }
   else
   {
-    my_printf("WWDG not reset\r\n", 16);
+    printf("WWDG not reset\r\n", 16);
   }
   HAL_Delay(2000);
-  my_printf("Before-feeding-the-dog:\r\n", 24);
+  printf("Before-feeding-the-dog:\r\n", 24);
   WWDG_Init(0x5F, 0x7F, WWDG_PRESCALER_8);
   while (1)
   {
     delay_ms(20);
     HAL_WWDG_Refresh(&g_hwwdg); // 喂狗函数
-    my_printf("After-feeding-the-dog:\r\n", 23);
+    printf("After-feeding-the-dog:\r\n", 23);
   }
 }
