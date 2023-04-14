@@ -35,6 +35,7 @@ BUILD_DIR = build
 C_SOURCES =  \
 Core/Src/system/sys/sys.c \
 Core/Src/system/delay.c \
+Drivers/SYSTEM/usart/usart.c \
 Core/Src/main.c \
 Core/Src/stm32f1xx_it.c \
 Core/Src/stm32f1xx_hal_msp.c \
@@ -59,7 +60,6 @@ Drivers/BSP/LED/led.c \
 Drivers/BSP/KEY/key.c \
 Drivers/BSP/IWDG/iwdg.c \
 Drivers/BSP/WWDG/wwdg.c \
-Drivers/SYSTEM/usart/usart.c \
 Drivers/BSP/TIMER/gtim.c \
 
 # ASM sources
@@ -151,8 +151,7 @@ LDSCRIPT = STM32F103ZETx_FLASH.ld
 # libraries
 LIBS = -lc -lm -lnosys 
 LIBDIR = 
-LDFLAGS = $(MCU) -specs=nano.specs -T$(LDSCRIPT) $(LIBDIR) $(LIBS) -Wl,-Map=$(BUILD_DIR)/$(TARGET).map,--cref -Wl,--gc-sections
-
+LDFLAGS = $(MCU) --specs=nano.specs --specs=nosys.specs -T$(LDSCRIPT) $(LIBDIR) $(LIBS) -Wl,-Map=$(BUILD_DIR)/$(TARGET).map,--cref -Wl,--gc-sections
 # default action: build all
 all: $(BUILD_DIR)/$(TARGET).elf $(BUILD_DIR)/$(TARGET).hex $(BUILD_DIR)/$(TARGET).bin
 
@@ -208,7 +207,7 @@ clean:
 # download
 #######################################
 PWD_DIR = $(shell pwd)
-PWD_DIR_WIN = D:/study/my-code/c-code/00-stm32f103ze/9-2
+PWD_DIR_WIN = D:/study/my-code/c-code/00-stm32f103ze/9-3
 OPENOCD_INTERFACE = stlink.cfg
 OPENOCD_TARGET = stm32f1x.cfg
 

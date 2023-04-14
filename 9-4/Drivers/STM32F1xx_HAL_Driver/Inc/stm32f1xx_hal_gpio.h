@@ -113,21 +113,33 @@ typedef enum
   *           - Z  : IO Direction mode (Input, Output, Alternate or Analog)
   * @{
   */
-#define  GPIO_MODE_INPUT                        0x00000000u   /*!< Input Floating Mode                   */
-#define  GPIO_MODE_OUTPUT_PP                    0x00000001u   /*!< Output Push Pull Mode                 */
-#define  GPIO_MODE_OUTPUT_OD                    0x00000011u   /*!< Output Open Drain Mode                */
-#define  GPIO_MODE_AF_PP                        0x00000002u   /*!< Alternate Function Push Pull Mode     */
-#define  GPIO_MODE_AF_OD                        0x00000012u   /*!< Alternate Function Open Drain Mode    */
+//输入浮动模式
+#define  GPIO_MODE_INPUT                        0x00000000u   /*!< Input Floating Mode  输入浮动模式                 */
+//推挽输出
+#define  GPIO_MODE_OUTPUT_PP                    0x00000001u   /*!< Output Push Pull Mode   推挽输出             */
+//开漏输出
+#define  GPIO_MODE_OUTPUT_OD                    0x00000011u   /*!< Output Open Drain Mode  开漏输出              */
+//复用推挽输出
+#define  GPIO_MODE_AF_PP                        0x00000002u   /*!< Alternate Function Push Pull Mode 复用推挽输出    */
+// 复用开漏输出
+#define  GPIO_MODE_AF_OD                        0x00000012u   /*!< Alternate Function Open Drain Mode 复用开漏输出  */
+//输入模式
 #define  GPIO_MODE_AF_INPUT                     GPIO_MODE_INPUT          /*!< Alternate Function Input Mode         */
 
+//模拟模式
 #define  GPIO_MODE_ANALOG                       0x00000003u   /*!< Analog Mode  */
-
+//中断上升沿触发
 #define  GPIO_MODE_IT_RISING                    0x10110000u   /*!< External Interrupt Mode with Rising edge trigger detection          */
+//中断下降沿触发
 #define  GPIO_MODE_IT_FALLING                   0x10210000u   /*!< External Interrupt Mode with Falling edge trigger detection         */
+//中断上升沿和下降沿触发
 #define  GPIO_MODE_IT_RISING_FALLING            0x10310000u   /*!< External Interrupt Mode with Rising/Falling edge trigger detection  */
 
+//事件上升沿触发
 #define  GPIO_MODE_EVT_RISING                   0x10120000u   /*!< External Event Mode with Rising edge trigger detection               */
+//事件下降沿触发
 #define  GPIO_MODE_EVT_FALLING                  0x10220000u   /*!< External Event Mode with Falling edge trigger detection              */
+//事件上升沿和下降沿触发
 #define  GPIO_MODE_EVT_RISING_FALLING           0x10320000u   /*!< External Event Mode with Rising/Falling edge trigger detection       */
 
 /**
@@ -138,8 +150,11 @@ typedef enum
   * @brief GPIO Output Maximum frequency
   * @{
   */
+// 低速模式
 #define  GPIO_SPEED_FREQ_LOW              (GPIO_CRL_MODE0_1) /*!< Low speed */
+// 中速模式
 #define  GPIO_SPEED_FREQ_MEDIUM           (GPIO_CRL_MODE0_0) /*!< Medium speed */
+// 高速模式
 #define  GPIO_SPEED_FREQ_HIGH             (GPIO_CRL_MODE0)   /*!< High speed */
 
 /**
@@ -150,9 +165,12 @@ typedef enum
   * @brief GPIO Pull-Up or Pull-Down Activation
   * @{
   */
+// 不上拉不下拉
 #define  GPIO_NOPULL        0x00000000u   /*!< No Pull-up or Pull-down activation  */
-#define  GPIO_PULLUP        0x00000001u   /*!< Pull-up activation                  */
-#define  GPIO_PULLDOWN      0x00000002u   /*!< Pull-down activation                */
+// 上拉
+#define  GPIO_PULLUP        0x00000001u   /*!< Pull-up activation  上拉                */
+// 下拉
+#define  GPIO_PULLDOWN      0x00000002u   /*!< Pull-down activation  下拉               */
 /**
   * @}
   */

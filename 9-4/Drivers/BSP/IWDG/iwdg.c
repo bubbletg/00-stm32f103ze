@@ -1,4 +1,4 @@
-
+#include <stdio.h>
 #include "main.h"
 #include "iwdg.h"
 
@@ -38,15 +38,15 @@ void test_iwdg(void)
   // 看门狗初始化
   iwdg_init(IWDG_PRESCALER_32, 1250); // 分频系数为32，重装载值为1250，喂狗时间为1s， 1s后不喂狗会复位，1s 是通过计算得到的， 1s = 32 * 1250 / 40MHz
 
-  my_printf("Before feeding the dog:\r\n", 24);
+  printf("Before feeding the dog:\r\n");
 
   while (1)
   {
     // 看门狗喂狗
     iwdg_feed();
     HAL_Delay(1000);
-    my_printf("After feeding the dog:\r\n", 23);
+    printf("After feeding the dog:\r\n");
   }
-  my_printf("abcdtiangui123", 14);
+  printf("abcdtiangui123");
 }
 

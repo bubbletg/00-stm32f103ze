@@ -148,6 +148,10 @@ typedef struct
 
 /**
   * @brief  TIM Input Capture Configuration Structure definition
+  * @param ICPolarity  设置输入捕获触发方式，上升沿或下降沿
+  * @param ICSelection  设置输入捕获选择，设置映射关系，IC1映射到TI1上，IC2映射到TI2上，IC3映射到TI3上，IC4映射到TI4上，
+  * @param ICPrescaler  设置输入捕获预分频，不分频，分频2，分频4，分频8
+  * @param ICFilter  设置输入捕获滤波器，0~15
   */
 typedef struct
 {
@@ -523,10 +527,10 @@ typedef  void (*pTIM_CallbackTypeDef)(TIM_HandleTypeDef *htim);  /*!< pointer to
   * @}
   */
 
-/** @defgroup TIM_Counter_Mode TIM Counter Mode
+/** @defgroup TIM_Counter_Mode TIM Counter Mode TIM_计数器模式TIM计数器模式
   * @{
   */
-#define TIM_COUNTERMODE_UP                 0x00000000U                          /*!< Counter used as up-counter   */
+#define TIM_COUNTERMODE_UP                 0x00000000U                          /*!< Counter used as up-counter 计数器用作上行计数器   */
 #define TIM_COUNTERMODE_DOWN               TIM_CR1_DIR                          /*!< Counter used as down-counter */
 #define TIM_COUNTERMODE_CENTERALIGNED1     TIM_CR1_CMS_0                        /*!< Center-aligned mode 1        */
 #define TIM_COUNTERMODE_CENTERALIGNED2     TIM_CR1_CMS_1                        /*!< Center-aligned mode 2        */
@@ -621,8 +625,11 @@ typedef  void (*pTIM_CallbackTypeDef)(TIM_HandleTypeDef *htim);  /*!< pointer to
 /** @defgroup TIM_Input_Capture_Polarity TIM Input Capture Polarity
   * @{
   */
+// 上升沿触发
 #define  TIM_ICPOLARITY_RISING             TIM_INPUTCHANNELPOLARITY_RISING      /*!< Capture triggered by rising edge on timer input                  */
+// 下降沿触发
 #define  TIM_ICPOLARITY_FALLING            TIM_INPUTCHANNELPOLARITY_FALLING     /*!< Capture triggered by falling edge on timer input                 */
+// 上升沿和下降沿触发
 #define  TIM_ICPOLARITY_BOTHEDGE           TIM_INPUTCHANNELPOLARITY_BOTHEDGE    /*!< Capture triggered by both rising and falling edges on timer input*/
 /**
   * @}
@@ -640,8 +647,11 @@ typedef  void (*pTIM_CallbackTypeDef)(TIM_HandleTypeDef *htim);  /*!< pointer to
 /** @defgroup TIM_Input_Capture_Selection TIM Input Capture Selection
   * @{
   */
+// 通道1的输入捕获选择
 #define TIM_ICSELECTION_DIRECTTI           TIM_CCMR1_CC1S_0                     /*!< TIM Input 1, 2, 3 or 4 is selected to be connected to IC1, IC2, IC3 or IC4, respectively */
+// 通道2的输入捕获选择
 #define TIM_ICSELECTION_INDIRECTTI         TIM_CCMR1_CC1S_1                     /*!< TIM Input 1, 2, 3 or 4 is selected to be connected to IC2, IC1, IC4 or IC3, respectively */
+// TRC 通道
 #define TIM_ICSELECTION_TRC                TIM_CCMR1_CC1S                       /*!< TIM Input 1, 2, 3 or 4 is selected to be connected to TRC */
 /**
   * @}
@@ -650,9 +660,13 @@ typedef  void (*pTIM_CallbackTypeDef)(TIM_HandleTypeDef *htim);  /*!< pointer to
 /** @defgroup TIM_Input_Capture_Prescaler TIM Input Capture Prescaler
   * @{
   */
+// 不分频
 #define TIM_ICPSC_DIV1                     0x00000000U                          /*!< Capture performed each time an edge is detected on the capture input */
+// 2分频
 #define TIM_ICPSC_DIV2                     TIM_CCMR1_IC1PSC_0                   /*!< Capture performed once every 2 events                                */
+// 4分频
 #define TIM_ICPSC_DIV4                     TIM_CCMR1_IC1PSC_1                   /*!< Capture performed once every 4 events                                */
+// 8分频
 #define TIM_ICPSC_DIV8                     TIM_CCMR1_IC1PSC                     /*!< Capture performed once every 8 events                                */
 /**
   * @}
@@ -734,12 +748,17 @@ typedef  void (*pTIM_CallbackTypeDef)(TIM_HandleTypeDef *htim);  /*!< pointer to
   * @}
   */
 
-/** @defgroup TIM_Channel TIM Channel
+/** @defgroup TIM_Channel TIM Channel TIM_通道TIM通道
   * @{
   */
+// 通道定义
+// 捕获/比较通道1标识符
 #define TIM_CHANNEL_1                      0x00000000U                          /*!< Capture/compare channel 1 identifier      */
+// 捕获/比较通道2标识符
 #define TIM_CHANNEL_2                      0x00000004U                          /*!< Capture/compare channel 2 identifier      */
+// 捕获/比较通道3标识符
 #define TIM_CHANNEL_3                      0x00000008U                          /*!< Capture/compare channel 3 identifier      */
+// 捕获/比较通道4标识符
 #define TIM_CHANNEL_4                      0x0000000CU                          /*!< Capture/compare channel 4 identifier      */
 #define TIM_CHANNEL_ALL                    0x0000003CU                          /*!< Global Capture/compare channel identifier  */
 /**
