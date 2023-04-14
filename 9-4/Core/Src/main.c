@@ -13,7 +13,7 @@ int main(void)
 {
 
   uint16_t current_cnt;
-  uint16_t oldcurrent_cnt;
+  uint16_t oldcurrent_cnt = 0;
   uint16_t key;
   uint16_t cnt = 0;
 
@@ -36,6 +36,7 @@ int main(void)
 
   while (1)
   {
+    key = key_scan(0);
     // key0 按下，清0
     if (key == KEY0_PRES)
     {
